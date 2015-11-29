@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">MIMRest</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="authentication_activity_user_name_hint">user name</string>
+    <string name="authentication_activity_password_hint">password</string>
+    <string name="authentication_activity_authenticate_button_label">authenticate</string>
+
+    <string name="authentication_activity_get_profile_button_label">get profile</string>
+
+    <string name="authentication_activity_default_user_name_value">jsmith</string>
+    <string name="authentication_activity_default_password_value">test</string>
+
+    <string name="authentication_activity_user_service_dialog_title">User Service</string>
+    <string name="authentication_activity_authentication_progress_dialog_label">Authenticating...</string>
+
+    <string name="authentication_activity_get_profile_progress_dialog_label">Requesting Profile...</string>
+
+    <string name="authentication_activity_authentication_succeeded_toast_text">authentication succeeded</string>
+    <string name="authentication_activity_authentication_failed_toast_text">authentication failed</string>
+
+    <string name="authentication_activity_get_profile_succeeded_toast_text">get profile succeeded</string>
+    <string name="authentication_activity_get_profile_failed_toast_text">get profile failed</string>
+
+</resources>
