@@ -1,6 +1,5 @@
 package com.mim_development.android.rest.mimrest.model.services.base.definition.http.request;
 
-
 import com.mim_development.android.rest.mimrest.Globals;
 import com.mim_development.android.rest.mimrest.model.services.base.HttpConnection;
 import com.mim_development.android.rest.mimrest.model.services.base.definition.HttpExecutorMonitor;
@@ -10,9 +9,14 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HttpRequest extends BaseHttpRequest{
+public class HttpRequest {
 
-    private Map<String , String> parameters;
+    private HttpConnection connection;
+    private HttpExecutorMonitor monitor;
+    private Map<String, String> headers;
+    private int connectionTimeoutInMillis;
+    private Globals.HttpVerbs verb;
+    private Map<String, String> parameters;
 
     public HttpRequest(
             final HttpConnection connection,
@@ -21,10 +25,16 @@ public class HttpRequest extends BaseHttpRequest{
             final int connectionTimeoutInMillis,
             final HttpExecutorMonitor monitor,
             final Map<String, String> parameters) {
-        super(connection, verb, headers, connectionTimeoutInMillis, monitor);
+
+        this.connection = connection;
+        this.monitor = monitor;
+        this.headers = headers;
+        this.connectionTimeoutInMillis = connectionTimeoutInMillis;
+        this.verb = verb;
+
         this.parameters = new HashMap<>(parameters.size());
 
-        for(String key : parameters.keySet()){
+        for (String key : parameters.keySet()) {
             String encodedKey;
 
             try {
@@ -47,7 +57,29 @@ public class HttpRequest extends BaseHttpRequest{
         this.parameters.putAll(parameters);
     }
 
-    public Map<String, String> getParameters(){
+    public String getConnectionString() {
+        return connection.toString();
+    }
+
+    public HttpExecutorMonitor getMonitor() {
+        return monitor;
+    }
+
+    public Map<String, String> getHeaders() {
+        Map<String, String> result = new HashMap<>(headers.size());
+        result.putAll(headers);
+        return result;
+    }
+
+    public int getConnectionTimeoutInMillis() {
+        return connectionTimeoutInMillis;
+    }
+
+    public String getVerb() {
+        return verb.name();
+    }
+
+    public Map<String, String> getParameters() {
         Map<String, String> parameterCopy = new HashMap<>(parameters.size());
         parameterCopy.putAll(parameters);
         return parameterCopy;

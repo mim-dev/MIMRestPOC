@@ -10,11 +10,9 @@ import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Map;
-import java.util.Set;
 
 public class HttpExecutor extends BaseHttpExecutor implements Runnable {
 

@@ -4,9 +4,7 @@ import android.util.Log;
 
 import com.mim_development.android.rest.mimrest.model.services.base.definition.HttpExecutorMonitor;
 import com.mim_development.android.rest.mimrest.model.services.base.definition.HttpResponse;
-import com.mim_development.android.rest.mimrest.model.services.base.definition.http.request.BaseHttpRequest;
 import com.mim_development.android.rest.mimrest.model.services.base.definition.http.request.HttpPayloadRequest;
-import com.mim_development.android.rest.mimrest.model.services.base.definition.http.request.HttpRequest;
 
 import org.apache.commons.io.IOUtils;
 
