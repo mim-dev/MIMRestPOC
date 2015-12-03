@@ -9,11 +9,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.mim_development.android.rest.mimrest.exception.OperationException;
-import com.mim_development.android.rest.mimrest.model.services.user.AuthenticationInvocationCallback;
-import com.mim_development.android.rest.mimrest.model.services.user.GetProfileInvocationCallback;
+import com.mim_development.android.rest.mimrest.model.services.base.service.ServiceCallback;
+import com.mim_development.android.rest.mimrest.model.services.base.service.ServiceErrorResponse;
+import com.mim_development.android.rest.mimrest.model.services.base.service.ServiceSuccessResponse;
 import com.mim_development.android.rest.mimrest.model.services.user.UserService;
-import com.mim_development.android.rest.mimrest.model.services.user.responses.AuthenticationResponse;
-import com.mim_development.android.rest.mimrest.model.services.user.responses.GetProfileResponse;
+import com.mim_development.android.rest.mimrest.model.services.user.responses.AuthenticationResponsePayload;
+import com.mim_development.android.rest.mimrest.model.services.user.responses.GetProfileResponsePayload;
 
 import java.util.UUID;
 
@@ -30,31 +31,34 @@ public class HomeActivity extends AppCompatActivity {
 
     private Handler handler = new Handler();
 
-    private class AuthenticationCallback implements AuthenticationInvocationCallback {
+    private class AuthenticationCallback implements ServiceCallback {
 
         @Override
-        public void success(final UUID operationIdentity, final AuthenticationResponse response) {
+        public void success(final UUID operationIdentity, final ServiceSuccessResponse response) {
 
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    processAuthenticationSuccess(operationIdentity, response);
+                    processAuthenticationSuccess(
+                            operationIdentity,
+                            response.getPayload(AuthenticationResponsePayload.class));
                 }
             });
         }
 
         @Override
-        public void error(final UUID operationIdentity, final OperationException exception) {
+        public void error(final UUID operationIdentity, final ServiceErrorResponse response) {
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    processAuthenticationError(operationIdentity, exception);
+                    processAuthenticationError(operationIdentity, response.getException());
                 }
             });
         }
     }
 
-    private void processAuthenticationSuccess(UUID operationIdentity, AuthenticationResponse response) {
+    private void processAuthenticationSuccess(
+            UUID operationIdentity, AuthenticationResponsePayload responsePayload) {
 
         if (authenticationRequestIdentifier != null &&
                 authenticationRequestIdentifier.equals(operationIdentity)) {
@@ -90,31 +94,33 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
-    private class GetProfileCallback implements GetProfileInvocationCallback {
+    private class GetProfileCallback implements ServiceCallback {
 
         @Override
-        public void success(final UUID operationIdentity, final GetProfileResponse response) {
+        public void success(final UUID operationIdentity, final ServiceSuccessResponse response) {
 
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    processGetProfileSuccess(operationIdentity, response);
+                    processGetProfileSuccess(
+                            operationIdentity,
+                            response.getPayload(GetProfileResponsePayload.class));
                 }
             });
         }
 
         @Override
-        public void error(final UUID operationIdentity, final OperationException exception) {
+        public void error(final UUID operationIdentity, final ServiceErrorResponse response) {
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    processGetProfileError(operationIdentity, exception);
+                    processGetProfileError(operationIdentity, response.getException());
                 }
             });
         }
     }
 
-    private void processGetProfileSuccess(UUID operationIdentity, GetProfileResponse response) {
+    private void processGetProfileSuccess(UUID operationIdentity, GetProfileResponsePayload response) {
 
         if (getProfileRequestIdentifier != null &&
                 getProfileRequestIdentifier.equals(operationIdentity)) {
