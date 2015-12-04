@@ -9,7 +9,6 @@ import com.mim_development.android.rest.mimrest.model.services.base.operation.Se
 import com.mim_development.android.rest.mimrest.model.services.movie.requests.GetMoviesRequest;
 import com.mim_development.android.rest.mimrest.model.services.movie.responses.GetMoviesResponse;
 import com.mim_development.android.rest.mimrest.model.services.movie.responses.MovieEntity;
-import com.mim_development.android.rest.mimrest.model.services.user.responses.GetProfileResponsePayload;
 
 import org.codehaus.jackson.map.ObjectMapper;
 
@@ -50,8 +49,6 @@ public class GetMoviesOperation extends ServiceOperation {
                     UUID identifier, byte[] responsePayload) throws Exception {
 
                 ObjectMapper mapper = new ObjectMapper();
-
-                String resultText = new String(responsePayload);
 
                 MovieEntity[] getMoviesResponsePayload = mapper.readValue(
                         responsePayload,

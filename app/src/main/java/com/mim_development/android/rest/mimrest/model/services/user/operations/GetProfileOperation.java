@@ -1,7 +1,7 @@
 package com.mim_development.android.rest.mimrest.model.services.user.operations;
 
 import com.mim_development.android.rest.mimrest.Globals;
-import com.mim_development.android.rest.mimrest.model.services.base.definition.*;
+import com.mim_development.android.rest.mimrest.model.services.base.definition.OperationResultPayloadProcessor;
 import com.mim_development.android.rest.mimrest.model.services.base.operation.OperationCallback;
 import com.mim_development.android.rest.mimrest.model.services.base.operation.OperationSuccessResponse;
 import com.mim_development.android.rest.mimrest.model.services.base.operation.ServiceOperation;
