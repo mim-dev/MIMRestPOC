@@ -3,7 +3,6 @@ package com.mim_development.android.rest.mimrest.model.services.base.definition.
 
 import com.mim_development.android.rest.mimrest.Globals;
 import com.mim_development.android.rest.mimrest.model.services.base.HttpConnection;
-import com.mim_development.android.rest.mimrest.model.services.base.definition.HttpExecutorMonitor;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -17,11 +16,10 @@ public class HttpPayloadRequest extends HttpRequest {
             Globals.HttpVerbs verb,
             final Map<String, String> headers,
             final int connectionTimeoutInMillis,
-            final HttpExecutorMonitor monitor,
             final Map<String, String> parameters,
             final byte[] payload) {
 
-        super(connection, verb, headers, connectionTimeoutInMillis, monitor, parameters);
+        super(connection, verb, headers, connectionTimeoutInMillis, parameters);
         this.payload = Arrays.copyOf(payload, payload.length);
     }
 

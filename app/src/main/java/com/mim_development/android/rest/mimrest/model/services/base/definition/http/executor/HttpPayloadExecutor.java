@@ -21,7 +21,10 @@ public class HttpPayloadExecutor extends BaseHttpExecutor implements Runnable{
 
     private HttpPayloadRequest request;
 
-    public HttpPayloadExecutor(final HttpPayloadRequest request) {
+    public HttpPayloadExecutor(
+            final HttpPayloadRequest request,
+            final HttpExecutorMonitor monitor) {
+        super(monitor);
 
         this.request = request;
     }
@@ -43,9 +46,6 @@ public class HttpPayloadExecutor extends BaseHttpExecutor implements Runnable{
         return request.getConnectionTimeoutInMillis();
     }
 
-    private HttpExecutorMonitor getMonitor() {
-        return request.getMonitor();
-    }
 
     @Override
     public void run() {

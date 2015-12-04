@@ -60,7 +60,7 @@ public class AuthenticationOperation extends RequestPayloadServiceOperation {
     }
 
     @Override
-    protected byte[] getPayload() {
+    protected byte[] getRequestPayload() {
         final ObjectMapper mapper = new ObjectMapper();
         try {
             return mapper.writeValueAsBytes(authenticationRequest);
@@ -70,10 +70,8 @@ public class AuthenticationOperation extends RequestPayloadServiceOperation {
     }
 
     public AuthenticationOperation(
-            AuthenticationRequest authenticationRequest,
-            UUID identifier,
-            OperationCallback callback) {
-        super(identifier, callback);
+            AuthenticationRequest authenticationRequest,OperationCallback callback) {
+        super(callback);
         this.authenticationRequest = authenticationRequest;
     }
 }

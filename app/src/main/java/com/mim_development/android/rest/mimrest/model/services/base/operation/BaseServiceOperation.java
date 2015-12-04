@@ -17,34 +17,33 @@ public abstract class BaseServiceOperation {
     private class HttpExecutorMonitorImpl implements HttpExecutorMonitor {
 
         private OperationResultPayloadProcessor payloadProcessor;
-        private UUID operationIdentity;
 
         public HttpExecutorMonitorImpl(
-                UUID operationIdentity,
                 OperationResultPayloadProcessor payloadProcessor){
-            this.operationIdentity = operationIdentity;
             this.payloadProcessor = payloadProcessor;
         }
 
         @Override
         public void result(HttpResponse response) {
             if(callback != null){
+
+                UUID operationIdentifier = getIdentifier();
                 int status = response.getStatus();
 
                 if(status >= 200 && status < 300){
 
                     try {
                         OperationSuccessResponse successResponse = payloadProcessor.processResponse(
-                                operationIdentity, response.getPayload());
+                                operationIdentifier, response.getPayload());
                         callback.success(successResponse);
                     } catch (Exception e) {
                         callback.error(new OperationErrorResponse(
-                                operationIdentity,
+                                operationIdentifier,
                                 new OperationException("Failed to process service response")));
                     }
                 } else{
                         callback.error(new OperationErrorResponse(
-                                operationIdentity,
+                                operationIdentifier,
                                 new OperationException("HTTP error code [" + response.getStatus() + "] received.")));
                     }
             }
@@ -54,27 +53,33 @@ public abstract class BaseServiceOperation {
         public void error(Throwable throwable) {
             if(callback != null){
                 callback.error(new OperationErrorResponse(
-                        operationIdentity,
+                        getIdentifier(),
                         new OperationException("HTTP operation exception received.", throwable)));
             }
         }
     }
 
     protected OperationCallback callback;
-    protected UUID identifier;
+    private UUID identifier;
 
     abstract protected String getServiceAction();
     abstract protected Globals.HttpVerbs getHttpVerb();
     abstract protected Map<String, String> getRequestParameters();
     abstract protected OperationResultPayloadProcessor getOperationResultPayloadProcessor();
 
-    protected HttpExecutorMonitor getHttpExecutionMonitor(){
-        return new HttpExecutorMonitorImpl(identifier, getOperationResultPayloadProcessor());
+    abstract public void invoke();
+
+    public UUID getIdentifier(){
+        return identifier;
     }
 
-    protected BaseServiceOperation(UUID identifier, OperationCallback callback){
-        this.identifier = identifier;
+    protected HttpExecutorMonitor getHttpExecutionMonitor(){
+        return new HttpExecutorMonitorImpl(getOperationResultPayloadProcessor());
+    }
+
+    protected BaseServiceOperation(OperationCallback callback){
         this.callback = callback;
+        identifier = UUID.randomUUID();
     }
 
     protected HttpConnection getConnection(){

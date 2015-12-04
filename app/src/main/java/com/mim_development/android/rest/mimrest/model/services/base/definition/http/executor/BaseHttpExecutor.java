@@ -1,14 +1,17 @@
 package com.mim_development.android.rest.mimrest.model.services.base.definition.http.executor;
 
+import com.mim_development.android.rest.mimrest.model.services.base.definition.HttpExecutorMonitor;
+
 import java.net.HttpURLConnection;
 import java.util.Map;
 
 public abstract class BaseHttpExecutor {
 
     protected abstract Map<String, String> getHeaders();
+    private HttpExecutorMonitor monitor;
 
-    protected BaseHttpExecutor() {
-
+    protected BaseHttpExecutor(final HttpExecutorMonitor monitor) {
+        this.monitor = monitor;
     }
 
     protected void addHeaders(HttpURLConnection connection) {
@@ -19,5 +22,9 @@ public abstract class BaseHttpExecutor {
                 connection.setRequestProperty(headerName, headers.get(headerName));
             }
         }
+    }
+
+    protected HttpExecutorMonitor getMonitor() {
+        return monitor;
     }
 }

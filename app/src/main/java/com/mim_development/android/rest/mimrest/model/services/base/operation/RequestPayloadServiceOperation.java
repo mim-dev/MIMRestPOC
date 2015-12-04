@@ -3,17 +3,16 @@ package com.mim_development.android.rest.mimrest.model.services.base.operation;
 import com.mim_development.android.rest.mimrest.model.services.base.definition.http.executor.HttpPayloadExecutor;
 import com.mim_development.android.rest.mimrest.model.services.base.definition.http.request.HttpPayloadRequest;
 
-import java.util.UUID;
-
 public abstract class RequestPayloadServiceOperation extends BaseServiceOperation {
 
-    protected RequestPayloadServiceOperation(UUID identifier, OperationCallback callback){
-        super(identifier, callback);
+    protected RequestPayloadServiceOperation(OperationCallback callback){
+        super(callback);
     }
 
+    @Override
     public void invoke(){
         HttpPayloadRequest request = getHttpPayloadRequest();
-        HttpPayloadExecutor executor = new HttpPayloadExecutor(request);
+        HttpPayloadExecutor executor = new HttpPayloadExecutor(request, getHttpExecutionMonitor());
         Thread executorThread = new Thread(executor);
         executorThread.start();
     }
@@ -23,10 +22,9 @@ public abstract class RequestPayloadServiceOperation extends BaseServiceOperatio
                 getHttpVerb(),
                 buildRequestHeaders(),
                 getConnectionTimeoutMillis(),
-                getHttpExecutionMonitor(),
                 getRequestParameters(),
-                getPayload());
+                getRequestPayload());
     }
 
-    protected abstract byte[] getPayload();
+    protected abstract byte[] getRequestPayload();
 }

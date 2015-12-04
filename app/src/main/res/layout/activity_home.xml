@@ -47,4 +47,14 @@
         android:onClick="authenticateActivityGetProfileButton_onClick"
         android:layout_centerHorizontal="true"/>
 
+    <Button
+        android:id="@+id/authentication_activity_get_movies_button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/authentication_activity_get_movies_button_label"
+        android:layout_below="@id/authentication_activity_get_profile_button"
+        android:onClick="authenticateActivityGetMoviesButton_onClick"
+        android:layout_centerHorizontal="true"/>
+
 </RelativeLayout>
