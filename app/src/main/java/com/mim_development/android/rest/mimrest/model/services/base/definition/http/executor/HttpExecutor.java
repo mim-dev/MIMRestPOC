@@ -13,6 +13,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Map;
+import java.util.Set;
 
 public class HttpExecutor extends BaseHttpExecutor implements Runnable {
 
@@ -20,7 +21,11 @@ public class HttpExecutor extends BaseHttpExecutor implements Runnable {
 
     private HttpRequest request;
 
-    public HttpExecutor(final HttpRequest request) {
+
+    public HttpExecutor(
+            final HttpRequest request,
+            final HttpExecutorMonitor monitor) {
+        super(monitor);
         this.request = request;
     }
 
@@ -39,10 +44,6 @@ public class HttpExecutor extends BaseHttpExecutor implements Runnable {
 
     private int getConnectionTimeoutInMillis() {
         return request.getConnectionTimeoutInMillis();
-    }
-
-    private HttpExecutorMonitor getMonitor() {
-        return request.getMonitor();
     }
 
     @Override
@@ -109,7 +110,10 @@ public class HttpExecutor extends BaseHttpExecutor implements Runnable {
         if(parameters != null && parameters.size() > 0){
             StringBuffer stringBuffer = new StringBuffer();
 
-            String[] keys = (String[])parameters.keySet().toArray();
+            Set<String> keyList = parameters.keySet();
+
+            String[] keys = new String[keyList.size()];
+            keys = parameters.keySet().toArray(keys);
             stringBuffer.append("?");
             stringBuffer.append(keys[0]);
             stringBuffer.append("=");

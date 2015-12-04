@@ -7,6 +7,8 @@
     <string name="authentication_activity_password_hint">password</string>
     <string name="authentication_activity_authenticate_button_label">authenticate</string>
 
+    <string name="authentication_activity_get_movies_button_label">get movies</string>
+
     <string name="authentication_activity_get_profile_button_label">get profile</string>
 
     <string name="authentication_activity_default_user_name_value">jsmith</string>
@@ -17,10 +19,16 @@
 
     <string name="authentication_activity_get_profile_progress_dialog_label">Requesting Profile...</string>
 
+    <string name="authentication_activity_movie_service_dialog_title">Movie Service</string>
+    <string name="authentication_activity_get_movies_progress_dialog_label">Requesting Movies...</string>
+
     <string name="authentication_activity_authentication_succeeded_toast_text">authentication succeeded</string>
     <string name="authentication_activity_authentication_failed_toast_text">authentication failed</string>
 
     <string name="authentication_activity_get_profile_succeeded_toast_text">get profile succeeded</string>
     <string name="authentication_activity_get_profile_failed_toast_text">get profile failed</string>
+
+    <string name="authentication_activity_get_movies_succeeded_toast_text">get movies succeeded</string>
+    <string name="authentication_activity_get_movies_failed_toast_text">get movies failed</string>
 
 </resources>

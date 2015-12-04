@@ -1,27 +1,34 @@
-package com.mim_development.android.rest.mimrest.model.services.user.operations;
+package com.mim_development.android.rest.mimrest.model.services.movie.operations;
+
 
 import com.mim_development.android.rest.mimrest.Globals;
 import com.mim_development.android.rest.mimrest.model.services.base.definition.OperationResultPayloadProcessor;
 import com.mim_development.android.rest.mimrest.model.services.base.operation.OperationCallback;
 import com.mim_development.android.rest.mimrest.model.services.base.operation.OperationSuccessResponse;
 import com.mim_development.android.rest.mimrest.model.services.base.operation.ServiceOperation;
-import com.mim_development.android.rest.mimrest.model.services.user.requests.GetProfileRequest;
-import com.mim_development.android.rest.mimrest.model.services.user.responses.GetProfileResponsePayload;
+import com.mim_development.android.rest.mimrest.model.services.movie.requests.GetMoviesRequest;
+import com.mim_development.android.rest.mimrest.model.services.movie.responses.GetMoviesResponse;
+import com.mim_development.android.rest.mimrest.model.services.movie.responses.MovieEntity;
 
 import org.codehaus.jackson.map.ObjectMapper;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class GetProfileOperation extends ServiceOperation {
+public class GetMoviesOperation extends ServiceOperation {
 
-    private static final String SERVICE_ACTION = "user/profile/%s";
-    private String serviceAction;
+    private static final String SERVICE_ACTION = "movie/movies";
+
+    private static final String ACTOR_PARAMETER_NAME = "actor";
+    private static final String GENRE_PARAMETER_NAME = "genre";
+
+    private Map<String, String> unEncodedParameters;
 
     @Override
     protected Map<String, String> getRequestParameters() {
-        return new HashMap<>();
+        return unEncodedParameters;
     }
 
     @Override
@@ -31,7 +38,7 @@ public class GetProfileOperation extends ServiceOperation {
 
     @Override
     public String getServiceAction() {
-        return serviceAction;
+        return SERVICE_ACTION;
     }
 
     @Override
@@ -43,26 +50,28 @@ public class GetProfileOperation extends ServiceOperation {
 
                 ObjectMapper mapper = new ObjectMapper();
 
-                GetProfileResponsePayload getProfileResponsePayload = mapper.readValue(
+                MovieEntity[] getMoviesResponsePayload = mapper.readValue(
                         responsePayload,
                         0,
                         responsePayload.length,
-                        GetProfileResponsePayload.class);
+                        MovieEntity[].class);
 
                 OperationSuccessResponse successResponse = new OperationSuccessResponse(
                         identifier,
-                        GetProfileResponsePayload.class,
-                        getProfileResponsePayload);
+                        GetMoviesResponse.class,
+                        new GetMoviesResponse(Arrays.asList(getMoviesResponsePayload)));
 
                 return successResponse;
             }
         };
     }
 
-    public GetProfileOperation(
-            GetProfileRequest request,
+    public GetMoviesOperation(
+            GetMoviesRequest request,
             OperationCallback callback){
         super(callback);
-        serviceAction = String.format(SERVICE_ACTION, request.getProfileId());
+        unEncodedParameters = new HashMap<>(2);
+        unEncodedParameters.put(ACTOR_PARAMETER_NAME, request.getActor());
+        unEncodedParameters.put(GENRE_PARAMETER_NAME, request.getGenre());
     }
 }

@@ -2,7 +2,6 @@ package com.mim_development.android.rest.mimrest.model.services.base.definition.
 
 import com.mim_development.android.rest.mimrest.Globals;
 import com.mim_development.android.rest.mimrest.model.services.base.HttpConnection;
-import com.mim_development.android.rest.mimrest.model.services.base.definition.HttpExecutorMonitor;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -12,7 +11,6 @@ import java.util.Map;
 public class HttpRequest {
 
     private HttpConnection connection;
-    private HttpExecutorMonitor monitor;
     private Map<String, String> headers;
     private int connectionTimeoutInMillis;
     private Globals.HttpVerbs verb;
@@ -23,11 +21,9 @@ public class HttpRequest {
             final Globals.HttpVerbs verb,
             final Map<String, String> headers,
             final int connectionTimeoutInMillis,
-            final HttpExecutorMonitor monitor,
             final Map<String, String> parameters) {
 
         this.connection = connection;
-        this.monitor = monitor;
         this.headers = headers;
         this.connectionTimeoutInMillis = connectionTimeoutInMillis;
         this.verb = verb;
@@ -53,16 +49,10 @@ public class HttpRequest {
 
             this.parameters.put(encodedKey, encodedValue);
         }
-
-        this.parameters.putAll(parameters);
     }
 
     public String getConnectionString() {
         return connection.toString();
-    }
-
-    public HttpExecutorMonitor getMonitor() {
-        return monitor;
     }
 
     public Map<String, String> getHeaders() {
