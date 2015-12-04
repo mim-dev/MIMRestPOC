@@ -1,6 +1,7 @@
 package com.mim_development.android.rest.mimrest.model.services.base.service;
 
 import com.mim_development.android.rest.mimrest.model.services.base.operation.BaseServiceOperation;
+import com.mim_development.android.rest.mimrest.model.services.base.service.callback.ServiceCallback;
 
 public class OperationContainer {
 

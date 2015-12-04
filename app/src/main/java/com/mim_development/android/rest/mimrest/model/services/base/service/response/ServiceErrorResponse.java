@@ -1,4 +1,4 @@
-package com.mim_development.android.rest.mimrest.model.services.base.service;
+package com.mim_development.android.rest.mimrest.model.services.base.service.response;
 
 import com.mim_development.android.rest.mimrest.exception.OperationException;
 

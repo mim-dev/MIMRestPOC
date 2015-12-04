@@ -9,9 +9,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.mim_development.android.rest.mimrest.exception.OperationException;
-import com.mim_development.android.rest.mimrest.model.services.base.service.ServiceCallback;
-import com.mim_development.android.rest.mimrest.model.services.base.service.ServiceErrorResponse;
-import com.mim_development.android.rest.mimrest.model.services.base.service.ServiceSuccessResponse;
+import com.mim_development.android.rest.mimrest.model.services.base.service.callback.ServiceCallback;
+import com.mim_development.android.rest.mimrest.model.services.base.service.response.ServiceErrorResponse;
+import com.mim_development.android.rest.mimrest.model.services.base.service.response.ServiceSuccessResponse;
 import com.mim_development.android.rest.mimrest.model.services.movie.MovieService;
 import com.mim_development.android.rest.mimrest.model.services.movie.responses.GetMoviesResponse;
 import com.mim_development.android.rest.mimrest.model.services.user.UserService;

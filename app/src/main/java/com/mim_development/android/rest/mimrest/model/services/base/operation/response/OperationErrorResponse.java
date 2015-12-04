@@ -1,7 +1,7 @@
-package com.mim_development.android.rest.mimrest.model.services.base.operation;
+package com.mim_development.android.rest.mimrest.model.services.base.operation.response;
 
 import com.mim_development.android.rest.mimrest.exception.OperationException;
-import com.mim_development.android.rest.mimrest.model.services.base.service.ServiceErrorResponse;
+import com.mim_development.android.rest.mimrest.model.services.base.service.response.ServiceErrorResponse;
 
 import java.util.UUID;
 

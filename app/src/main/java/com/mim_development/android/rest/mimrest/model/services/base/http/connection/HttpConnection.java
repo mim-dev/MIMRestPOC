@@ -1,4 +1,4 @@
-package com.mim_development.android.rest.mimrest.model.services.base;
+package com.mim_development.android.rest.mimrest.model.services.base.http.connection;
 
 
 public class HttpConnection {

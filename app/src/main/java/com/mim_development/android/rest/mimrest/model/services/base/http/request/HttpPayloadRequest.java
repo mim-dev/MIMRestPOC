@@ -1,8 +1,8 @@
-package com.mim_development.android.rest.mimrest.model.services.base.definition.http.request;
+package com.mim_development.android.rest.mimrest.model.services.base.http.request;
 
 
 import com.mim_development.android.rest.mimrest.Globals;
-import com.mim_development.android.rest.mimrest.model.services.base.HttpConnection;
+import com.mim_development.android.rest.mimrest.model.services.base.http.connection.HttpConnection;
 
 import java.util.Arrays;
 import java.util.Map;

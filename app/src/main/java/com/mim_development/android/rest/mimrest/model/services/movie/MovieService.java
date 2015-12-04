@@ -1,7 +1,7 @@
 package com.mim_development.android.rest.mimrest.model.services.movie;
 
 import com.mim_development.android.rest.mimrest.model.services.base.service.Service;
-import com.mim_development.android.rest.mimrest.model.services.base.service.ServiceCallback;
+import com.mim_development.android.rest.mimrest.model.services.base.service.callback.ServiceCallback;
 import com.mim_development.android.rest.mimrest.model.services.movie.operations.GetMoviesOperation;
 import com.mim_development.android.rest.mimrest.model.services.movie.requests.GetMoviesRequest;
 

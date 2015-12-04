@@ -1,7 +1,7 @@
 package com.mim_development.android.rest.mimrest.model.services.user;
 
 import com.mim_development.android.rest.mimrest.model.services.base.service.Service;
-import com.mim_development.android.rest.mimrest.model.services.base.service.ServiceCallback;
+import com.mim_development.android.rest.mimrest.model.services.base.service.callback.ServiceCallback;
 import com.mim_development.android.rest.mimrest.model.services.user.operations.AuthenticationOperation;
 import com.mim_development.android.rest.mimrest.model.services.user.operations.GetProfileOperation;
 import com.mim_development.android.rest.mimrest.model.services.user.requests.AuthenticationRequest;

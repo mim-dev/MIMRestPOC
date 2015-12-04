@@ -1,6 +1,6 @@
-package com.mim_development.android.rest.mimrest.model.services.base.service;
+package com.mim_development.android.rest.mimrest.model.services.base.service.response;
 
-import com.mim_development.android.rest.mimrest.model.services.base.definition.response.Payload;
+import com.mim_development.android.rest.mimrest.model.services.base.Payload;
 
 import java.util.HashMap;
 import java.util.Map;
