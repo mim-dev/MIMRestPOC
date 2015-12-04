@@ -1,9 +1,9 @@
 package com.mim_development.android.rest.mimrest.model.services.user.operations;
 
 import com.mim_development.android.rest.mimrest.Globals;
-import com.mim_development.android.rest.mimrest.model.services.base.definition.OperationResultPayloadProcessor;
-import com.mim_development.android.rest.mimrest.model.services.base.operation.OperationCallback;
-import com.mim_development.android.rest.mimrest.model.services.base.operation.OperationSuccessResponse;
+import com.mim_development.android.rest.mimrest.model.services.base.operation.OperationResultPayloadProcessor;
+import com.mim_development.android.rest.mimrest.model.services.base.operation.callback.OperationCallback;
+import com.mim_development.android.rest.mimrest.model.services.base.operation.response.OperationSuccessResponse;
 import com.mim_development.android.rest.mimrest.model.services.base.operation.ServiceOperation;
 import com.mim_development.android.rest.mimrest.model.services.user.requests.GetProfileRequest;
 import com.mim_development.android.rest.mimrest.model.services.user.responses.GetProfileResponsePayload;

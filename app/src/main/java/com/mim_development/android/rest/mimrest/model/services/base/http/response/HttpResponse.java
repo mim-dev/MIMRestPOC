@@ -1,4 +1,4 @@
-package com.mim_development.android.rest.mimrest.model.services.base.definition;
+package com.mim_development.android.rest.mimrest.model.services.base.http.response;
 
 import java.util.ArrayList;
 import java.util.Arrays;

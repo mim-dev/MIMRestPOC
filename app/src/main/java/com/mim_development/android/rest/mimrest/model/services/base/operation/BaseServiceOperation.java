@@ -3,10 +3,12 @@ package com.mim_development.android.rest.mimrest.model.services.base.operation;
 
 import com.mim_development.android.rest.mimrest.Globals;
 import com.mim_development.android.rest.mimrest.exception.OperationException;
-import com.mim_development.android.rest.mimrest.model.services.base.HttpConnection;
-import com.mim_development.android.rest.mimrest.model.services.base.definition.HttpExecutorMonitor;
-import com.mim_development.android.rest.mimrest.model.services.base.definition.HttpResponse;
-import com.mim_development.android.rest.mimrest.model.services.base.definition.OperationResultPayloadProcessor;
+import com.mim_development.android.rest.mimrest.model.services.base.http.connection.HttpConnection;
+import com.mim_development.android.rest.mimrest.model.services.base.http.executor.HttpExecutorMonitor;
+import com.mim_development.android.rest.mimrest.model.services.base.http.response.HttpResponse;
+import com.mim_development.android.rest.mimrest.model.services.base.operation.callback.OperationCallback;
+import com.mim_development.android.rest.mimrest.model.services.base.operation.response.OperationErrorResponse;
+import com.mim_development.android.rest.mimrest.model.services.base.operation.response.OperationSuccessResponse;
 
 import java.util.HashMap;
 import java.util.Map;

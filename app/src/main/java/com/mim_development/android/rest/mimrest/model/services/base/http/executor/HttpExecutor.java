@@ -1,10 +1,9 @@
-package com.mim_development.android.rest.mimrest.model.services.base.definition.http.executor;
+package com.mim_development.android.rest.mimrest.model.services.base.http.executor;
 
 import android.util.Log;
 
-import com.mim_development.android.rest.mimrest.model.services.base.definition.HttpExecutorMonitor;
-import com.mim_development.android.rest.mimrest.model.services.base.definition.HttpResponse;
-import com.mim_development.android.rest.mimrest.model.services.base.definition.http.request.HttpRequest;
+import com.mim_development.android.rest.mimrest.model.services.base.http.response.HttpResponse;
+import com.mim_development.android.rest.mimrest.model.services.base.http.request.HttpRequest;
 
 import org.apache.commons.io.IOUtils;
 

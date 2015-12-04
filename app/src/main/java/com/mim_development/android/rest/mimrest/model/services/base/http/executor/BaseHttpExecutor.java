@@ -1,6 +1,4 @@
-package com.mim_development.android.rest.mimrest.model.services.base.definition.http.executor;
-
-import com.mim_development.android.rest.mimrest.model.services.base.definition.HttpExecutorMonitor;
+package com.mim_development.android.rest.mimrest.model.services.base.http.executor;
 
 import java.net.HttpURLConnection;
 import java.util.Map;

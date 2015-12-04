@@ -1,7 +1,8 @@
 package com.mim_development.android.rest.mimrest.model.services.base.operation;
 
-import com.mim_development.android.rest.mimrest.model.services.base.definition.http.executor.HttpPayloadExecutor;
-import com.mim_development.android.rest.mimrest.model.services.base.definition.http.request.HttpPayloadRequest;
+import com.mim_development.android.rest.mimrest.model.services.base.http.executor.HttpPayloadExecutor;
+import com.mim_development.android.rest.mimrest.model.services.base.http.request.HttpPayloadRequest;
+import com.mim_development.android.rest.mimrest.model.services.base.operation.callback.OperationCallback;
 
 public abstract class RequestPayloadServiceOperation extends BaseServiceOperation {
 

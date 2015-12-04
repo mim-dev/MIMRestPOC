@@ -1,6 +1,6 @@
 package com.mim_development.android.rest.mimrest.model.services.user.responses;
 
-import com.mim_development.android.rest.mimrest.model.services.base.definition.response.Payload;
+import com.mim_development.android.rest.mimrest.model.services.base.Payload;
 
 import org.codehaus.jackson.annotate.JsonAutoDetect;
 

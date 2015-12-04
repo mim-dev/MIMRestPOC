@@ -1,6 +1,6 @@
 package com.mim_development.android.rest.mimrest.model.services.movie.responses;
 
-import com.mim_development.android.rest.mimrest.model.services.base.definition.response.Payload;
+import com.mim_development.android.rest.mimrest.model.services.base.Payload;
 
 import java.util.List;
 
